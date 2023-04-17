@@ -1,0 +1,74 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      {% block extra_head %}
+          <link rel="stylesheet" href="{% static "css/home.css" %}" />
+      {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Book Review</title>
+    <style type="text/css">
+      .navbar {
+        min-height: 100px;
+        font-size: 25px;
+      }
+      .navbar-brand {
+        font-size: 25px;
+      }
+    </style>
+  </head >
+  <body style="background-color: black">
+        <nav id="nav" class="navbar navbar-expand-sm navbar-dark sticky-top">
+            <img class="img" src="https://api2.zoomit.ir/media/2021-2-spotify-logo-green-black-background-638bb37f8b369136d4587a86">
+          <a class="navbar-brand text-white" href="/auth/home/">Главная</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link text-white" href="/auth/news">Поиск<span class="sr-only">(current)</span></a>
+              </li>
+                <li class="nav-item active">
+                <a class="nav-link text-white" href="/auth/news">Моя медиатека<span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+              <a href="/auth/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Войти</a>
+            </div>
+          </div>
+        </nav>
+         {% block content %}
+
+             <h1 style="text-align: center; color: white">Добрый день</h1>
+
+                <div class="navn">
+                    <div class="pole">
+                        {% for mus in musicList %}
+                            <a class="all" href="/auth/music/{{ mus.music.isbn }}">
+                                <div class="allnews">
+                                    <img class="image" src="{{ mus.music.image.url }}"/>
+
+                                    <a style="color: white;text-align: center; " href="/auth/music/{{ mus.music.isbn }}">{{ mus.music.title }}</a>
+                                    <br>
+                                        <h7 style = "color: gray">{{ mus.music.artist }}</h7>
+                                </div>
+                            </a>
+                    {% endfor %}
+                    </div>
+                </div>
+
+
+
+         {% endblock %}
+
+  </body>
+</html>

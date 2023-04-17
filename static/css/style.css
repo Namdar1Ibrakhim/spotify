@@ -1,0 +1,15 @@
+.myform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100%;
+}
+.forma{
+    width: 100vw;
+    height: 100vh;
+}
+.fr{
+    padding-bottom: 10px;
+}

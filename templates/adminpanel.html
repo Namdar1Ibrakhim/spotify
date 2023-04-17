@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/admin.css" %}" />
+    <title>Title</title>
+</head>
+<body style="background-color:black;">
+
+<div class="myform">
+    <h1 style="color:rgb(30,215,96)">Загрузить музыку</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="fr">{{ form.title }}</div>
+                <div class="fr">{{ form.artist }}</div>
+                <div class="fr">{{ form.publication_date }}</div>
+                <div class="fr">{{ form.isbn }}</div>
+                <div class="fr">{{ form.album }}</div>
+                <div class="fr">{{ form.duration }}</div>
+                <h4 style="color:white;">Фотография</h4>
+                <div>{{ form.image }}</div>
+                <h4 style="color:white;">Аудио</h4>
+                <div>{{ form.audio_file}}</div>
+
+                <div style="padding-bottom: 4px; color: white"><span>{{ error }}</span></div>
+                <br>
+                <div>
+                    <button class="btn btn-success" style="width: 100px; height: 30px; background-color: rgb(30,215,96); color: white" type="submit">Post</button>
+                    <a style="color: white" href="/auth/home">Перейти сайт</a>
+                </div>
+            </form>
+</div>
+</body>
+</html>

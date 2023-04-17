@@ -1,0 +1,14 @@
+.myform{
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.fr{
+    padding-bottom: 5px;
+    border-radius: 4px;
+    max-width: 300px;
+    color: white;
+}

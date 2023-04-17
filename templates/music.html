@@ -1,0 +1,28 @@
+{% extends 'home.html'%}
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static "css/music.css" %}" />
+{% endblock %}
+
+{% block content %}
+    <ul class="list-group">
+        {% for mus in music_list %}
+        <div class="body_intro">
+            <div class="obw">
+                <div class="fr"><img class="image" src="{{ mus.music.image.url }}"/></div>
+                <div class="fr"><span class="">{{ mus.music.title }}</span></div>
+                <br>
+                <div class="fr"> <span>{{ mus.music.artist }}</span></div>
+                <div class="fr"><span>{{ mus.music.publication_date }}</span></div>
+                <div class="fr"><span>{{ mus.music.album }}</span></div>
+                <div class="fr"><span>{{ mus.music.duration }}</span></div>
+                <div class="fr">
+                     <audio controls>
+                        <source src="{{ mus.music.audio_file.url }}" type="audio/mpeg"/>
+                    </audio>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+{% endblock %}
