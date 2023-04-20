@@ -17,8 +17,10 @@
                 {% csrf_token %}
                 <div class="fr">{{ form.email }}</div>
                 <div class="fr">{{ form.username }}</div>
+                <div class="fr">{{ form.age }}</div>
+                <div class="fr">{{ form.gender }}</div>
                 <div class="fr">{{ form.password }}</div>
-                <span style="color:white;">{{ error }}</span>
+                <div style="color:white; max-width: 300px; padding-bottom:10px">{{ error }}</div>
                 <div>
                     <button class="btn btn-success" type="submit">Submit</button>
                     <a href="/auth/login">Войти</a>

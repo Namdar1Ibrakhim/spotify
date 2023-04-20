@@ -4,7 +4,7 @@ from django.forms import ModelForm, TextInput, FileInput
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['email', 'username', 'password']
+        fields = ['email', 'username', 'password', 'age', 'gender']
 
         widgets = {
             "email": TextInput(attrs={
@@ -14,6 +14,14 @@ class UserForm(ModelForm):
             "username": TextInput(attrs={
                 "class": "form-control",
                 "placeholder": "Username"
+            }),
+            "age": TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Age"
+            }),
+            "gender": TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Gender"
             }),
             "password": TextInput(attrs={
                 "class": "form-control",

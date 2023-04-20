@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserForm, MusicForm
 from.models import User, AdminUser, Music
 from django.contrib.auth import authenticate
-
+import re
 
 # Create your views here.
 
@@ -79,7 +79,7 @@ def login(request):
                 if ema == dat.email and pas == dat.password:
                     return redirect('/auth/home')
                 else:
-                    error = 'Incorrect data'
+                    error = 'Login or password is wrong'
             else:
                 error = 'User dont exists, please register'
         else:
@@ -95,14 +95,26 @@ def register(request):
         form = UserForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['email']
+            ag = form.cleaned_data['age']
+            pas = form.cleaned_data['password']
             bd = User.objects.filter(email=subject)
-            if not bd.exists():
+            x = re.findall("[A-Z]", pas)
+            y = re.findall("[a-z]", pas)
+
+
+            isAge = isinstance(ag,int)
+            print(isAge)
+            print(type(ag))
+            if not bd.exists() and len(pas) >= 8 and x and y:
+
                 form.save()
                 return redirect('/auth/login')
-            else:
-                error = 'Пользователь существует'
+            if bd.exists():
+                error = 'Пользователь с таким email уже существует'
+            elif len(pas) < 8 or not x or not y:
+                error += 'Пароль должен содержать больше 8 символов среди которых 1 символ в верхнем и 1 символ в нижних регистрах'
         else:
-            error = 'ERROR FORM'
+            error = 'ERROR FORM, проверьте правильность заполненных данных '
 
     form = UserForm()
 
